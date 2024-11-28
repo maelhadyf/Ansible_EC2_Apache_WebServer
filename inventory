@@ -1,0 +1,4 @@
+[webservers]
+ec2-54-242-222-126.compute-1.amazonaws.com
+ec2-54-144-126-100.compute-1.amazonaws.com
+#ansible_host=your_webserver_ip ansible_user=your_user
