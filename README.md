@@ -73,7 +73,7 @@ ansible-playbook site.yml
 - Configures the website to dynamically display the hostname of the EC2 instance.
 - Ensures proper file ownership and permissions for deployed web content.
 
-## ⚖️ License
+## 📄 License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## ✍️ Author
