@@ -40,6 +40,8 @@ remote_user = ec2-user
 private_key_file = ./test.pem
 ```
 
+---
+
 ## 📘 Usage
 
 ### Step 1: Clone the Repository
@@ -53,6 +55,34 @@ cd Ansible_EC2_Apache_WebServer
 ```bash
 ansible-playbook site.yml
 ```
+
+---
+
+# 🔍 What the Playbook Does
+
+## Security Configuration
+- Sets up passwordless `sudo` access for the `student` user.
+- Configures proper file permissions to enhance security.
+
+## Apache Installation
+- Installs the Apache web server.
+- Starts and enables the Apache service to ensure it runs on system boot.
+
+## Website Deployment
+- Deploys custom HTML content to the web server.
+- Configures the website to dynamically display the hostname of the EC2 instance.
+- Ensures proper file ownership and permissions for deployed web content.
+
+## ⚖️ License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## ✍️ Author
+**King Memo**
+
+## 🙏 Thank You!
+Thank you for using this project. Your support and feedback are greatly appreciated!
+
+
 
 
 
