@@ -1,0 +1,46 @@
+---
+- name: Setup Apache web servers
+  hosts: webservers
+  become: yes
+  tasks:
+
+    - name: Ensure the user has passwordless sudo access
+      lineinfile:
+        path: /etc/sudoers
+        line: 'student ALL=(ALL) NOPASSWD: ALL'
+        state: present
+        validate: 'visudo -cf %s'  # Validate the sudoers file
+  
+    - name: Install Apache
+      yum:
+        name: httpd
+        state: present
+    
+    - name: Start and enable Apache
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: Deploy website files
+      copy:
+        src: ./index.html
+        dest: /var/www/html/
+        owner: apache
+        group: apache
+        mode: '0755'
+
+    - name: Create an HTML file reflecting the hostname
+      ansible.builtin.copy:
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>{{ inventory_hostname }}</title>
+          </head>
+          <body>
+              <h1>Welcome to King Memo</h1>
+              <p>Your hostname is: {{ inventory_hostname }}</p>
+          </body>
+          </html>
+        dest: /var/www/html/index.html
