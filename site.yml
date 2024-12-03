@@ -9,7 +9,7 @@
         path: /etc/sudoers
         line: 'student ALL=(ALL) NOPASSWD: ALL'
         state: present
-        validate: 'visudo -cf %s'  # Validate the sudoers file
+        validate: 'visudo -cf %s'
   
     - name: Install Apache
       yum:
@@ -21,14 +21,6 @@
         name: httpd
         state: started
         enabled: yes
-
-    - name: Deploy website files
-      copy:
-        src: ./index.html
-        dest: /var/www/html/
-        owner: apache
-        group: apache
-        mode: '0755'
 
     - name: Create an HTML file reflecting the hostname
       ansible.builtin.copy:
@@ -44,3 +36,6 @@
           </body>
           </html>
         dest: /var/www/html/index.html
+        owner: apache
+        group: apache
+        mode: '0755'
