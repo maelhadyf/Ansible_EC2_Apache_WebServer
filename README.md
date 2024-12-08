@@ -11,12 +11,13 @@ This Ansible project automates the deployment and configuration of Apache web se
 - Automated service management
 
 ## 🏗️ Project Structure
+```
 Ansible_EC2_Apache_WebServer/
 ├── site.yml # Main playbook
 ├── ansible.cfg # Ansible configuration
 ├── inventory # Server inventory file
 └── test.pem # AWS EC2 key pair (not included in repo)
-
+```
 ## 🔧 Prerequisites
 - Ansible installed on control machine
 - Valid AWS EC2 instances
